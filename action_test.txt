@@ -1,4 +1,39 @@
-1
-2
-3
-4
+call plug#begin()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-surround'
+Plug 'machakann/vim-highlightedyank'
+call plug#end()
+colorscheme gruvbox
+"set number relativenumber
+let g:highlightedyank_highlight_duration = 1000
+highlight HighlightedyankRegion cterm=reverse gui=reverse
+let mapleader=","
+noremap \ ,
+nnoremap <Leader>/ :Ack!<Space>
+nnoremap <silent> [q :cprevious<CR>
+nnoremap <silent> ]q :cnext<CR>
+map <Leader><c-m> :e $MYVIMRC<CR>
+map <Leader>w :w<CR>
+map <Leader><c-r> :so $MYVIMRC<CR>
+map <Leader>pi :PlugInstall<CR>
+nnoremap <Leader>f :FZF!<CR>
+map <Leader><C-f> :Rg<CR>
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprevious<CR>
+cnoremap <expr> %% getcmdtype( ) == ':' ? expand('%:h').'/' : '%%'
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+set nocompatible
+filetype plugin on
+runtime macros/matchit.vim
+"height ligth cusor
+set t_Co=256
+set cursorline
+set cursorcolumn
+
+highlight CursorLine cterm=none ctermbg=236
+highlight CursorColumn cterm=none ctermbg=236
